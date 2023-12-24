@@ -44,7 +44,7 @@ class SignInActivity : AppCompatActivity() {
 
 
         binding.textView6.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
 
         }

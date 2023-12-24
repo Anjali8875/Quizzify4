@@ -106,7 +106,7 @@
                 android:background="@drawable/shape"
                 android:ems="10"
                 android:hint="Type your Email"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:padding="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
