@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ImageQuesPage">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/Image4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="82dp"
+            android:layout_marginEnd="46dp"
+            android:layout_marginBottom="165dp"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Image3"
+            app:layout_constraintTop_toBottomOf="@+id/Image2" />
+
+        <ImageView
+            android:id="@+id/Image3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="82dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="165dp"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Image4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Image1" />
+
+        <ImageView
+            android:id="@+id/Image2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="123dp"
+            android:layout_marginEnd="57dp"
+            android:layout_marginBottom="82dp"
+            android:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toTopOf="@+id/Image4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Image1"
+            app:layout_constraintTop_toBottomOf="@+id/ImageQues" />
+
+        <EditText
+            android:id="@+id/ImageQues"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.087" />
+
+        <ImageView
+            android:id="@+id/Image1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="123dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="82dp"
+            app:layout_constraintBottom_toTopOf="@+id/Image3"
+            app:layout_constraintEnd_toStartOf="@+id/Image2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ImageQues"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

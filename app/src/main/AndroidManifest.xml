@@ -13,6 +13,30 @@
         android:theme="@style/Theme.Quizzify"
         tools:targetApi="31">
         <activity
+            android:name=".ImageQuesList"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ImageQuesPage"
+            android:exported="false" />
+        <activity
+            android:name=".adaptor.ProfileAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".profilePage"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UploadImageActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".loadingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".UploadingImageActivity"
             android:exported="false" />
         <activity

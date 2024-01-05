@@ -42,7 +42,7 @@ class QuizGameActivity : AppCompatActivity() {
         etOption2 = findViewById(R.id.Option2)
         etOption3 = findViewById(R.id.Option3)
         etOption4 = findViewById(R.id.Option4)
-        etquestionId = findViewById(R.id.tvEmpName)
+
 
     }
 
