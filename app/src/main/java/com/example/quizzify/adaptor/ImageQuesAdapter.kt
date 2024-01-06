@@ -14,9 +14,8 @@ import com.example.quizzify.R
 import com.example.quizzify.models.ImageQuestionModel
 import com.example.quizzify.models.ProfileModel
 
-class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>): RecyclerView.Adapter<ProfileAdapter.profileHolder>() {
-    class imagequestionsHolder(imagequestionsView: View) :
-        RecyclerView.ViewHolder(imagequestionsView) {
+class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>): RecyclerView.Adapter<ImageQuesAdapter.imagequestionsHolder>() {
+    class imagequestionsHolder(imagequestionsView: View) : RecyclerView.ViewHolder(imagequestionsView) {
 
 
         val ImageQues: EditText = imagequestionsView.findViewById(R.id.ImageQues)
@@ -30,23 +29,46 @@ class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): imagequestionsHolder {
-        val profileView = LayoutInflater.from(parent.context).inflate(
-            R.layout.activity_profile_page,
+        val imagequestionsView = LayoutInflater.from(parent.context).inflate(
+            R.layout.activity_image_ques_page,
             parent, false
         )
-        return imagequestionsHolder(profileView)
+        return imagequestionsHolder(imagequestionsView)
     }
 
-    override fun onBindViewHolder(holder: ProfileAdapter.profileHolder, position: Int) {
-        val currentimageques= ImageQuesList[position]
-        holder.ImageQues.setText(currentprofile.imageQuestion.toString())
 
-        val bytes = Base64.decode(
-            currentprofile.simage1,
-            android.util.Base64.DEFAULT
+
+    override fun onBindViewHolder(holder: imagequestionsHolder, position: Int) {
+        val currentimagequestions= ImageQuesList[position]
+        holder.ImageQues.setText(currentimagequestions.enterQuestion.toString())
+
+        val bytes1 = Base64.decode(
+            currentimagequestions.simage1,
+            Base64.DEFAULT
         )
-        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-        holder.simage1.setImageBitmap(bitmap)
+        val bitmap1 = BitmapFactory.decodeByteArray(bytes1, 0, bytes1.size)
+        holder.Image1.setImageBitmap(bitmap1)
+
+        val bytes2 = Base64.decode(
+            currentimagequestions.simage2,
+            Base64.DEFAULT
+        )
+        val bitmap2 = BitmapFactory.decodeByteArray(bytes2, 0, bytes2.size)
+        holder.Image2.setImageBitmap(bitmap2)
+
+        val bytes3 = Base64.decode(
+            currentimagequestions.simage3,
+            Base64.DEFAULT
+        )
+        val bitmap3 = BitmapFactory.decodeByteArray(bytes3, 0, bytes3.size)
+        holder.Image3.setImageBitmap(bitmap3)
+
+        val bytes4 = Base64.decode(
+            currentimagequestions.simage1,
+            Base64.DEFAULT
+        )
+        val bitmap4 = BitmapFactory.decodeByteArray(bytes4, 0, bytes4.size)
+        holder.Image4.setImageBitmap(bitmap4)
     }
 
     override fun getItemCount(): Int {

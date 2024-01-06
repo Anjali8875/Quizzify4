@@ -31,36 +31,19 @@ class UploadImageActivity2 : AppCompatActivity() {
     var sImage4:String?="null"
 
 
-    private lateinit var etimgquestion: EditText
-    private lateinit var etsimage1: ImageView
-    private lateinit var etsimage2: ImageView
-    private lateinit var etsimage3: ImageView
-    private lateinit var etsimage4: ImageView
-    private lateinit var btnmoreques: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityUploadImage2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        etimgquestion=findViewById(R.id.enterQuestion)
-        etsimage1=findViewById(R.id.imageView)
-        etsimage2=findViewById(R.id.imageView2)
-        etsimage3=findViewById(R.id.imageView3)
-        etsimage4=findViewById(R.id.imageView4)
-        btnmoreques=findViewById(R.id.createmorequestions)
 
 
-        setContentView(R.layout.activity_upload_image2)
 
-        btnmoreques.setOnClickListener{
-            etimgquestion.text.clear()
-            etsimage1.setImageDrawable(null)
-            etsimage2.setImageDrawable(null)
-            etsimage3.setImageDrawable(null)
-            etsimage4.setImageDrawable(null)
 
-        }
+
+
 
 
 

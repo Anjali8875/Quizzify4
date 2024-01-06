@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quizzify.adaptor.ImageQuesAdapter
 import com.example.quizzify.models.ImageQuestionModel
 import com.example.quizzify.models.ProfileModel
 import com.google.firebase.database.DataSnapshot
@@ -36,10 +37,10 @@ class ImageQuesList : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
                     for(profilesnapshot in snapshot.children){
-                        val imagequestions=profilesnapshot.getValue(ProfileModel::class.java)
+                        val imagequestions=profilesnapshot.getValue(ImageQuestionModel::class.java)
                         imageQuesArrayList.add(imagequestions!!)
                     }
-                    imageQuesRecyclerView.adapter=ProfileAdapter(imageQuesArrayList)
+                    imageQuesRecyclerView.adapter= ImageQuesAdapter(imageQuesArrayList)
                 }
             }
 

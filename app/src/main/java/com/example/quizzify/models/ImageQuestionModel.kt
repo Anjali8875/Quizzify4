@@ -7,3 +7,4 @@ data class ImageQuestionModel (
     val simage3:String?=null,
     val simage4:String?=null
 )
+

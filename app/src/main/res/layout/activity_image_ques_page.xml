@@ -18,7 +18,7 @@
             android:layout_marginTop="82dp"
             android:layout_marginEnd="46dp"
             android:layout_marginBottom="165dp"
-            android:src="@tools:sample/avatars"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Image3"
@@ -32,7 +32,6 @@
             android:layout_marginTop="82dp"
             android:layout_marginEnd="64dp"
             android:layout_marginBottom="165dp"
-            android:src="@tools:sample/avatars"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Image4"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +45,7 @@
             android:layout_marginTop="123dp"
             android:layout_marginEnd="57dp"
             android:layout_marginBottom="82dp"
-            android:src="@tools:sample/avatars"
+
             app:layout_constraintBottom_toTopOf="@+id/Image4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Image1"
@@ -77,8 +76,7 @@
             app:layout_constraintBottom_toTopOf="@+id/Image3"
             app:layout_constraintEnd_toStartOf="@+id/Image2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ImageQues"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toBottomOf="@+id/ImageQues" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

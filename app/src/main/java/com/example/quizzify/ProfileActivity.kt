@@ -49,6 +49,8 @@ class ProfileActivity : AppCompatActivity() {
         db.child(id.toString()).setValue(profile).addOnSuccessListener{
             binding.firstName.text.clear()
             binding.lastName.text.clear()
+            binding.Age.text.clear()
+            binding.Gender.text.clear()
             sImage=""
             Toast.makeText(this,"data inserted",Toast.LENGTH_SHORT).show()
             val intent:Intent=Intent(this,InsertPlayChooseActivity::class.java)

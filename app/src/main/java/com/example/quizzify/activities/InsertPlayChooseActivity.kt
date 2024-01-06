@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.quizzify.ImageQuesList
 import com.example.quizzify.ProfileListActivity
 import com.example.quizzify.R
 import com.example.quizzify.SignInActivity
@@ -69,6 +70,12 @@ class InsertPlayChooseActivity : AppCompatActivity() {
         var i:Intent
         i= Intent(this,ProfileListActivity::class.java)
         startActivity(i)
+    }
+
+    fun showList2(view: View) {
+        var j:Intent
+        j= Intent(this,ImageQuesList::class.java)
+        startActivity(j)
     }
 
 
