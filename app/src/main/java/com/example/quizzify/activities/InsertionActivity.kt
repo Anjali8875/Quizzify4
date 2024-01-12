@@ -24,6 +24,7 @@ class InsertionActivity : AppCompatActivity() {
     private lateinit var etquizNo:EditText
 
     private lateinit var dbRef:DatabaseReference
+    private lateinit var etquesNo:EditText
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class InsertionActivity : AppCompatActivity() {
         btnsaveData = findViewById(R.id.button4)
         etquizTitle = findViewById(R.id.quizTitle)
         etquizNo=findViewById(R.id.quizNo)
+        etquesNo=findViewById(R.id.QuesNo)
 
 
 
@@ -54,18 +56,20 @@ class InsertionActivity : AppCompatActivity() {
             val Option4 = etOption4.text.toString()
             val savedata = btnsaveData.text.toString()
             val title = etquizTitle.text.toString()
-            val quesNo=etquizNo.text.toString()
-            val quesNoReference=dbRef.child(quesNo)
-            val titleReference=quesNoReference.child("title").setValue(title)
-            val quesListReference=quesNoReference.child("QuestionList")
+            val QuesNo=etquesNo.text.toString()
+            val quizNo=etquizNo.text.toString()
+            val quizNoReference=dbRef.child(quizNo)
+            val titleReference=quizNoReference.child("title").setValue(title)
+            val quesListReference=quizNoReference.child("QuestionList")
+            val quesNoReference=quesListReference.child(QuesNo)
 
 
 
-            quesListReference.child("enterQuestion").setValue(enterQuestion)
-            quesListReference.child("Option1").setValue(Option1)
-            quesListReference.child("Option2").setValue(Option2)
-            quesListReference.child("Option3").setValue(Option3)
-            quesListReference.child("Option4").setValue(Option4)
+            quesNoReference.child("enterQuestion").setValue(enterQuestion)
+            quesNoReference.child("Option1").setValue(Option1)
+            quesNoReference.child("Option2").setValue(Option2)
+            quesNoReference.child("Option3").setValue(Option3)
+            quesNoReference.child("Option4").setValue(Option4)
 
 
             Toast.makeText(this,"Data inserted successfully",Toast.LENGTH_SHORT).show()
@@ -78,6 +82,7 @@ class InsertionActivity : AppCompatActivity() {
             etOption4.text.clear()
             etenterQuestion.text.clear()
             etquizNo.text.clear()
+            etquesNo.text.clear()
 
 
 
