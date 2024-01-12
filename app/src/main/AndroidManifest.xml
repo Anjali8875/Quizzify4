@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Quizzify"
         tools:targetApi="31">
         <activity
+            android:name=".StartQuiz"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PlayQuiz2"
+            android:exported="false" />
+        <activity
+            android:name=".PlayQuiz"
+            android:exported="false" />
+        <activity
+            android:name=".PlayQuiz2"
+            android:exported="false" />
+        <activity
+            android:name=".PlayTextQuiz"
+            android:exported="false" />
+        <activity
+            android:name=".PlayQuizActivity"
+            android:exported="false" />
+        <activity
             android:name=".ImageQuesList"
             android:exported="false" />
         <activity

@@ -16,16 +16,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient">
 
         <EditText
             android:id="@+id/Gender2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text="Name"
+            android:text="Gender"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,45 +35,48 @@
 
         <EditText
             android:id="@+id/age2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text="Name"
+            android:text="Age"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lastname2"
-            app:layout_constraintVertical_bias="0.268" />
+            app:layout_constraintVertical_bias="0.269" />
 
         <EditText
             android:id="@+id/lastname2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text="Name"
+            android:text="Last name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.161"
+            app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstname2"
-            app:layout_constraintVertical_bias="0.207" />
+            app:layout_constraintVertical_bias="0.197" />
 
         <EditText
             android:id="@+id/firstname2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_marginStart="45dp"
             android:layout_marginTop="77dp"
             android:layout_marginEnd="147dp"
+            android:background="@drawable/shape"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text="Name"
+            android:text="First name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

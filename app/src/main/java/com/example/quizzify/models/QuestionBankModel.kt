@@ -7,5 +7,7 @@ data class QuestionBankModel(
     var Option2: String? = null,
     var Option3: String? = null,
     var Option4: String? = null,
+    var title:String?=null,
+
 
 )

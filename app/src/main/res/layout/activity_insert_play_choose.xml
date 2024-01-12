@@ -26,8 +26,8 @@
         android:layout_width="168dp"
         android:layout_height="48dp"
         android:background="#fc67fa"
-        android:text="Play quiz"
-        android:textSize="20sp"
+        android:text="Fetch text based questions"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -95,4 +95,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFetchData"
          />
+
+    <Button
+        android:id="@+id/playTextQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="323dp"
+        android:layout_marginBottom="97dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/btnInsertData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

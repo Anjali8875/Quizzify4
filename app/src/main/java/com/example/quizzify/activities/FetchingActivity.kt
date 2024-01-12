@@ -1,11 +1,13 @@
 package com.example.quizzify.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,15 +27,22 @@ class FetchingActivity : AppCompatActivity() {
     private lateinit var tvLoadingData: TextView
     private lateinit var empList: ArrayList<QuestionBankModel>
     private lateinit var dbRef: DatabaseReference
+    private lateinit var etquizNo: EditText
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fetching)
 
-        empRecyclerView = findViewById(R.id.rvEmp)
-        empRecyclerView.layoutManager = LinearLayoutManager(this)
-         empRecyclerView.setHasFixedSize(true)
-        tvLoadingData = findViewById(R.id.tvLoadingData)
+       empRecyclerView=findViewById(R.id.rvEmp)
+       empRecyclerView.layoutManager=LinearLayoutManager(this)
+       empRecyclerView.setHasFixedSize(true)
+       tvLoadingData=findViewById(R.id.tvLoadingData)
+       etquizNo=findViewById(R.id.quizNo)
+
+
+
+
 
         empList = arrayListOf<QuestionBankModel>()
 
@@ -45,8 +54,9 @@ class FetchingActivity : AppCompatActivity() {
 
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
-
-        dbRef = FirebaseDatabase.getInstance().getReference("Questions")
+        val quesNo=etquizNo.text.toString()
+        val quesNoReference=dbRef.child(quesNo)
+        dbRef = FirebaseDatabase.getInstance().reference.child(quesNo)
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

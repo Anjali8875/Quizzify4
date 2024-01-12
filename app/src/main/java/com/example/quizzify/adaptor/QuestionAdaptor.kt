@@ -10,8 +10,9 @@ import android.view.View
 import android.widget.TextView
 
 
-class QuestionAdaptor(private val empList: ArrayList<QuestionBankModel>) :
-    RecyclerView.Adapter<QuestionAdaptor.ViewHolder>() {
+class QuestionAdaptor(private val empList: ArrayList<QuestionBankModel>) : RecyclerView.Adapter<QuestionAdaptor.ViewHolder>(){
+
+
 
     private lateinit var mListener:onItemClickListener
 

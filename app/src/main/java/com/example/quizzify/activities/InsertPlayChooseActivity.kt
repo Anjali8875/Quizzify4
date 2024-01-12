@@ -7,9 +7,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.quizzify.ImageQuesList
+import com.example.quizzify.PlayQuiz
 import com.example.quizzify.ProfileListActivity
 import com.example.quizzify.R
 import com.example.quizzify.SignInActivity
+import com.example.quizzify.StartQuiz
 import com.example.quizzify.UploadImageActivity2
 import com.example.quizzify.UploadingImageActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -23,6 +25,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
     private lateinit var btnFetchData:Button
     private lateinit var btnImage:Button
     private lateinit var auth:FirebaseAuth
+    private lateinit var playTextQuiz:Button
 
 
 
@@ -47,6 +50,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
         btnInsertData=findViewById(R.id.btnInsertData)
         btnFetchData=findViewById(R.id.btnFetchData)
         btnImage=findViewById(R.id.image)
+        playTextQuiz=findViewById(R.id.playTextQuiz)
 
         btnInsertData.setOnClickListener{
             val intent= Intent(this, InsertionActivity::class.java)
@@ -60,6 +64,11 @@ class InsertPlayChooseActivity : AppCompatActivity() {
 
         btnImage.setOnClickListener{
             val intent=Intent(this, UploadImageActivity2::class.java)
+            startActivity(intent)
+        }
+
+        playTextQuiz.setOnClickListener{
+            val intent=Intent(this, StartQuiz::class.java)
             startActivity(intent)
         }
 
