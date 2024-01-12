@@ -33,6 +33,7 @@ class PlayQuiz : AppCompatActivity() {
     private fun loadQuestions(){
         binding.apply {
 
+
         }
 
     }

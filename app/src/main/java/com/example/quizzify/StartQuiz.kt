@@ -48,6 +48,7 @@ class StartQuiz : AppCompatActivity() {
 
         databaseReference = FirebaseDatabase.getInstance().reference.child(quesNo)
 
+
         fetchQuizTitles()
 
         quizAdaptor = QuizListAdapter(ArrayList())

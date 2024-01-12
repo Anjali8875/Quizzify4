@@ -68,7 +68,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
         }
 
         playTextQuiz.setOnClickListener{
-            val intent=Intent(this, StartQuiz::class.java)
+            val intent=Intent(this, StartActivity2::class.java)
             startActivity(intent)
         }
 
