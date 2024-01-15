@@ -62,8 +62,8 @@ class UploadImageActivity2 : AppCompatActivity() {
         db= FirebaseDatabase.getInstance().getReference("ImageQuestions")
 
         val imagequestions= ImageQuestionModel(enterQuestion,sImage1,sImage2,sImage3,sImage4)
-        val databaseReference= FirebaseDatabase.getInstance().reference
-        val id=databaseReference.push().key
+//        val databaseReference= FirebaseDatabase.getInstance().reference
+        val id=db.push().key
         db.child(id.toString()).setValue(imagequestions).addOnSuccessListener{
             binding.enterQuestion.text.clear()
 

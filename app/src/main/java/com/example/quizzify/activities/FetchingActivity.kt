@@ -4,16 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quizzify.QuizGameActivity
 import com.example.quizzify.R
-import com.example.quizzify.adaptor.QuestionAdaptor
+import com.example.quizzify.adaptor.QuizListAdapter3
 import com.example.quizzify.models.QuestionBankModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,7 +35,7 @@ class FetchingActivity : AppCompatActivity() {
        empRecyclerView.layoutManager=LinearLayoutManager(this)
        empRecyclerView.setHasFixedSize(true)
        tvLoadingData=findViewById(R.id.tvLoadingData)
-       etquizNo=findViewById(R.id.quizNo)
+
 
 
 
@@ -54,9 +51,8 @@ class FetchingActivity : AppCompatActivity() {
 
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
-        val quesNo=etquizNo.text.toString()
-        val quesNoReference=dbRef.child(quesNo)
-        dbRef = FirebaseDatabase.getInstance().reference.child(quesNo)
+
+        dbRef = FirebaseDatabase.getInstance().getReference("quiz")
 
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -66,18 +62,18 @@ class FetchingActivity : AppCompatActivity() {
                         val empData = empSnap.getValue(QuestionBankModel::class.java)
                         empList.add(empData!!)
                     }
-                    val mAdapter = QuestionAdaptor(empList)
+                    val mAdapter = QuizListAdapter3(empList)
                     empRecyclerView.adapter = mAdapter
 
 
 
-                    mAdapter.setOnClickListener(object :QuestionAdaptor.onItemClickListener{
+                    mAdapter.setOnClickListener(object :QuizListAdapter3.onItemClickListener{
 
 
 
 
                         override fun onItemClick(position: Int) {
-                            val intent=Intent(this@FetchingActivity, QuizGameActivity::class.java)
+                            val intent=Intent(this@FetchingActivity, QuizGameActivity2::class.java)
 
                             intent.putExtra("questionId",empList[position].questionId)
                             intent.putExtra("Option1",empList[position].Option1)
@@ -85,6 +81,8 @@ class FetchingActivity : AppCompatActivity() {
                             intent.putExtra("Option3",empList[position].Option3)
                             intent.putExtra("Option4",empList[position].Option4)
                             intent.putExtra("enterQuestion",empList[position].enterQuestion)
+                            intent.putExtra("time",empList[position].time)
+                            intent.putExtra("correct", empList[position].correctans)
                             startActivity(intent)
                         }
 
