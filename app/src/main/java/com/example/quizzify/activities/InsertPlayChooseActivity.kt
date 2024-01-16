@@ -20,6 +20,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
     private lateinit var btnImage:Button
     private lateinit var auth:FirebaseAuth
     private lateinit var playTextQuiz:Button
+    private lateinit var btnfetchimgques:Button
 
 
 
@@ -44,7 +45,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
         btnInsertData=findViewById(R.id.btnInsertData)
         btnFetchData=findViewById(R.id.btnFetchData)
         btnImage=findViewById(R.id.image)
-        playTextQuiz=findViewById(R.id.playTextQuiz)
+        btnfetchimgques=findViewById(R.id.fetchimgques)
 
         btnInsertData.setOnClickListener{
             val intent= Intent(this, InsertionActivity::class.java)
@@ -60,6 +61,8 @@ class InsertPlayChooseActivity : AppCompatActivity() {
             val intent=Intent(this, UploadImageActivity2::class.java)
             startActivity(intent)
         }
+
+
 
 
 

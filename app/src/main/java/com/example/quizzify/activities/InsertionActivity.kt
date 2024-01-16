@@ -42,6 +42,7 @@ class InsertionActivity : AppCompatActivity() {
         etquizTitle = findViewById(R.id.quizTitle)
         etcorrectans=findViewById(R.id.correctans)
         ettime=findViewById(R.id.time)
+        val timeLeftInMillis:Long=ettime.text.toString().toLongOrNull()?:0
 
 
 
