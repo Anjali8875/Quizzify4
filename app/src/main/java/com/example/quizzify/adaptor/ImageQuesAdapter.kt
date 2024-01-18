@@ -26,6 +26,8 @@ class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>)
         val Image4: ImageView = imagequestionsView.findViewById(R.id.Image4)
 
 
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): imagequestionsHolder {
@@ -74,6 +76,8 @@ class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>)
     override fun getItemCount(): Int {
         return ImageQuesList.size
     }
+
+
 
 }
 

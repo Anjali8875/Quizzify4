@@ -32,7 +32,7 @@ class ImageQuesList : AppCompatActivity() {
     }
 
     private fun getImageQuesData() {
-        db= FirebaseDatabase.getInstance().getReference("items")
+        db= FirebaseDatabase.getInstance().getReference("ImageQuestions")
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){

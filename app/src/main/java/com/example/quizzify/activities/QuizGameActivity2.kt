@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.quizzify.R
 import com.example.quizzify.models.ScoreModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -28,8 +29,10 @@ class QuizGameActivity2 : AppCompatActivity() {
     private lateinit var btnDelete: Button
     private lateinit var ettime:TextView
 
+    private var countdownTime = 0L
+
     private lateinit var countDownTimer: CountDownTimer
-    private var timeLeftInMillis: Long=6000// 60 seconds
+    private var timeLeftInMillis: Long=60000// 60 seconds
     private val countDownInterval: Long = 1000 // 1 second
     private lateinit var timerText:TextView
 
@@ -38,6 +41,9 @@ class QuizGameActivity2 : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var correctAns: String
     private lateinit var databaseReference2: DatabaseReference
+    private var iniTime = 0L
+    private lateinit var auth : FirebaseAuth
+    private var userID = ""
 
 
 
@@ -45,6 +51,21 @@ class QuizGameActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_game2)
         timerText = findViewById(R.id.time2)
+        auth = FirebaseAuth.getInstance()
+        userID = auth.currentUser?.uid.toString()
+        var countdownTime=0L
+        iniTime = System.currentTimeMillis()
+
+
+
+
+//        recordAnswerTime()
+        val userScore=calculateScore()
+
+       // fun calculateElapsedTime():Long{
+           // val currentTime=System.currentTimeMillis()
+           // return currentTime-startTime
+      //  }
        // var timeLeftInMillis:Long=ettime.text.toString().toLongOrNull()?:0
 
 
@@ -106,6 +127,7 @@ class QuizGameActivity2 : AppCompatActivity() {
 
 
         submitButton.setOnClickListener {
+            recordAnswerTime()
             checkAnswer()
         }
 
@@ -127,6 +149,28 @@ class QuizGameActivity2 : AppCompatActivity() {
 
 
 
+
+    }
+
+    fun recordAnswerTime(){
+        countdownTime=System.currentTimeMillis()
+
+
+
+    }
+
+    private fun calculateScore():Long{
+//            val maxTime=10L
+//            val minScore=0
+//            val maxScore=100
+
+
+
+//            val normalizedTime=countdownTime.coerceIn(0L,maxTime)
+//            val score=((maxTime-normalizedTime)/maxTime.toDouble()*(maxScore-minScore)+minScore).toInt()
+        val timeLeft =  countDownInterval - iniTime
+        val score = 100 + timeLeft
+        return score
 
     }
 
@@ -189,20 +233,27 @@ class QuizGameActivity2 : AppCompatActivity() {
 //                override fun onDataChange(snapshot: DataSnapshot) {
                 //    val correctOption = snapshot.child("correctans").getValue(String::class.java)
                     val correctOption = intent.getStringExtra("correct")
-                    var score=0
+                    var score= 0
                     if (correctOption != null && selectedRadioButton.text.toString() == correctOption.toString()) {
-                        score+=10
-                        Toast.makeText(this@QuizGameActivity2,"correct answer",Toast.LENGTH_LONG).show()
+                        score = calculateScore().toInt()
+
+                        Toast.makeText(this@QuizGameActivity2,"correct answer\nScore - $score",Toast.LENGTH_LONG).show()
+                        val intent= Intent(this@QuizGameActivity2,FetchingActivity::class.java)
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this@QuizGameActivity2,"Incorrect answer",Toast.LENGTH_LONG).show()
+                        val intent= Intent(this@QuizGameActivity2,FetchingActivity::class.java)
+                        startActivity(intent)
 
 
                     }
 
+                    databaseReference2 = FirebaseDatabase.getInstance().getReference("score")
+
                    val quesId=databaseReference2.push().key!!
 
-                   val questions=ScoreModel(quesId,title, score)
-                   databaseReference2.child(quesId).setValue(questions)
+                   val questions=ScoreModel(quesId,score)
+                   databaseReference2.child(userID).child(quesId).setValue(questions)
 
 
                     //insert
@@ -253,8 +304,10 @@ class QuizGameActivity2 : AppCompatActivity() {
     private fun handleTimerFinish() {
         // Timer finished, handle accordingly
         //timerText.text = "0"
+        checkAnswer()
         val intent= Intent(this@QuizGameActivity2,FetchingActivity::class.java)
         startActivity(intent)
+        finish()
         // Add your logic here for actions to be taken when the timer finishes
     }
 
