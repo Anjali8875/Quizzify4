@@ -5,27 +5,48 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quizzify.ImageQuesList
-import com.example.quizzify.ProfileAdapter
 import com.example.quizzify.R
 import com.example.quizzify.models.ImageQuestionModel
-import com.example.quizzify.models.ProfileModel
+import java.lang.IndexOutOfBoundsException
 
-class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>): RecyclerView.Adapter<ImageQuesAdapter.imagequestionsHolder>() {
-    class imagequestionsHolder(imagequestionsView: View) : RecyclerView.ViewHolder(imagequestionsView) {
+class ImageQuesAdapter(val ImageQuesList: ArrayList<ImageQuestionModel>,private val listener: QuizItemClickListener): RecyclerView.Adapter<ImageQuesAdapter.imagequestionsHolder>() {
+
+
+    interface QuizItemClickListener {
+        fun onOptionClick(questionIndex: Int, optionIndex: Int)
+
+    }
+
+    class imagequestionsHolder(imagequestionsView: View) :
+        RecyclerView.ViewHolder(imagequestionsView) {
 
 
         val ImageQues: EditText = imagequestionsView.findViewById(R.id.ImageQues)
+        val correctimgans: EditText = imagequestionsView.findViewById(R.id.correctimgans)
 
         val Image1: ImageView = imagequestionsView.findViewById(R.id.Image1)
         val Image2: ImageView = imagequestionsView.findViewById(R.id.Image2)
         val Image3: ImageView = imagequestionsView.findViewById(R.id.Image3)
         val Image4: ImageView = imagequestionsView.findViewById(R.id.Image4)
+        val optionsButton: List<Button> = List(4) { index ->
+            itemView.findViewById<Button>(getButtonId(index))
+        }
 
+        private fun getButtonId(index: Int): Int {
+            return when (index) {
+                0 -> R.id.browse1
+                1 -> R.id.browse2
+                2 -> R.id.browse3
+                3 -> R.id.browse4
+                else -> throw IndexOutOfBoundsException("Invalid Button Index")
 
+            }
+
+        }
 
 
     }
@@ -39,10 +60,18 @@ class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>)
     }
 
 
-
     override fun onBindViewHolder(holder: imagequestionsHolder, position: Int) {
-        val currentimagequestions= ImageQuesList[position]
+        val currentimagequestions = ImageQuesList[position]
         holder.ImageQues.setText(currentimagequestions.enterQuestion.toString())
+        holder.correctimgans.setText(currentimagequestions.correctimgans.toString())
+
+        for (i in currentimagequestions.options!!.indices) {
+            holder.optionsButton[i].text = currentimagequestions.options[i]
+            holder.optionsButton[i].setOnClickListener {
+                listener.onOptionClick(position, i)
+            }
+
+        }
 
         val bytes1 = Base64.decode(
             currentimagequestions.simage1,
@@ -78,8 +107,5 @@ class ImageQuesAdapter(private val ImageQuesList: ArrayList<ImageQuestionModel>)
     }
 
 
-
 }
-
-
 

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizzify.adaptor.ImageQuesAdapter
 import com.example.quizzify.models.ImageQuestionModel
-import com.example.quizzify.models.ProfileModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -20,6 +19,8 @@ class ImageQuesList : AppCompatActivity() {
     private lateinit var db: DatabaseReference
     private lateinit var imageQuesRecyclerView: RecyclerView
     private lateinit var imageQuesArrayList: ArrayList<ImageQuestionModel>
+    private lateinit var  listener:ImageQuesAdapter.QuizItemClickListener
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +40,10 @@ class ImageQuesList : AppCompatActivity() {
                     for(profilesnapshot in snapshot.children){
                         val imagequestions=profilesnapshot.getValue(ImageQuestionModel::class.java)
                         imageQuesArrayList.add(imagequestions!!)
+
                     }
-                    imageQuesRecyclerView.adapter= ImageQuesAdapter(imageQuesArrayList)
+                    imageQuesRecyclerView.adapter= ImageQuesAdapter(imageQuesArrayList,listener
+                    )
                 }
             }
 

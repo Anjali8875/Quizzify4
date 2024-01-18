@@ -25,6 +25,11 @@ import java.io.ByteArrayOutputStream
 class UploadImageActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityUploadImage2Binding
     private lateinit var db: DatabaseReference
+    private lateinit var etcorrectans:EditText
+    private lateinit var etOption1:Button
+    private lateinit var etOption2:Button
+    private lateinit var etOption3:Button
+    private lateinit var etOption4:Button
     var sImage1:String?="null"
     var sImage2:String?="null"
     var sImage3:String?="null"
@@ -37,6 +42,12 @@ class UploadImageActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityUploadImage2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        etcorrectans=findViewById(R.id.correctimgans)
+        etOption1=findViewById<Button>(R.id.browse1)
+        etOption2=findViewById<Button>(R.id.browse2)
+        etOption3=findViewById<Button>(R.id.browse3)
+        etOption4=findViewById<Button>(R.id.browse4)
+
 
 
 
@@ -59,9 +70,25 @@ class UploadImageActivity2 : AppCompatActivity() {
 
     fun insert_data(view: View) {
         val enterQuestion=binding.enterQuestion.text.toString()
+        val correctimgans=binding.correctimgans.text.toString().toIntOrNull()
+        val Option1=etOption1.text.toString()
+        val Option2=etOption2.text.toString()
+        val Option3=etOption3.text.toString()
+        val Option4=etOption4.text.toString()
+
+        val options= listOf(Option1,Option2,Option3,Option4)
+
         db= FirebaseDatabase.getInstance().getReference("ImageQuestions")
 
-        val imagequestions= ImageQuestionModel(enterQuestion,sImage1,sImage2,sImage3,sImage4)
+
+        val imagequestions=
+            correctimgans?.let {
+                ImageQuestionModel(enterQuestion,sImage1,sImage2,sImage3,sImage4,
+                    it,options
+                )
+            }
+
+
 //        val databaseReference= FirebaseDatabase.getInstance().reference
         val id=db.push().key
         db.child(id.toString()).setValue(imagequestions).addOnSuccessListener{
