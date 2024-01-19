@@ -6,7 +6,13 @@ data class ImageQuestionModel (
     val simage2:String?=null,
     val simage3:String?=null,
     val simage4:String?=null,
-    val correctimgans:Int,
+    val correctimgans:Int?=null,
     val options:List<String>?=null
 )
+
+
+
+
+
+
 

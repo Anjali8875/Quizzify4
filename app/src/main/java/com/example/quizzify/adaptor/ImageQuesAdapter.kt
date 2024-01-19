@@ -16,6 +16,7 @@ import java.lang.IndexOutOfBoundsException
 class ImageQuesAdapter(val ImageQuesList: ArrayList<ImageQuestionModel>,private val listener: QuizItemClickListener): RecyclerView.Adapter<ImageQuesAdapter.imagequestionsHolder>() {
 
 
+
     interface QuizItemClickListener {
         fun onOptionClick(questionIndex: Int, optionIndex: Int)
 
