@@ -27,7 +27,7 @@ class ImageQuesAdapter(val ImageQuesList: ArrayList<ImageQuestionModel>,private 
 
 
         val ImageQues: EditText = imagequestionsView.findViewById(R.id.ImageQues)
-        val correctimgans: EditText = imagequestionsView.findViewById(R.id.correctimgans)
+      //  val correctimgans: EditText = imagequestionsView.findViewById(R.id.correctimgans)
 
         val Image1: ImageView = imagequestionsView.findViewById(R.id.Image1)
         val Image2: ImageView = imagequestionsView.findViewById(R.id.Image2)
@@ -39,10 +39,10 @@ class ImageQuesAdapter(val ImageQuesList: ArrayList<ImageQuestionModel>,private 
 
         private fun getButtonId(index: Int): Int {
             return when (index) {
-                0 -> R.id.browse1
-                1 -> R.id.browse2
-                2 -> R.id.browse3
-                3 -> R.id.browse4
+                0 -> R.id.option1
+                1 -> R.id.option2
+                2 -> R.id.option3
+                3 -> R.id.option4
                 else -> throw IndexOutOfBoundsException("Invalid Button Index")
 
             }
@@ -64,7 +64,7 @@ class ImageQuesAdapter(val ImageQuesList: ArrayList<ImageQuestionModel>,private 
     override fun onBindViewHolder(holder: imagequestionsHolder, position: Int) {
         val currentimagequestions = ImageQuesList[position]
         holder.ImageQues.setText(currentimagequestions.enterQuestion.toString())
-        holder.correctimgans.setText(currentimagequestions.correctimgans.toString())
+       // holder.correctimgans.setText(currentimagequestions.correctimgans.toString())
 
         for (i in currentimagequestions.options!!.indices) {
             holder.optionsButton[i].text = currentimagequestions.options[i]

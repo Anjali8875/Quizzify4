@@ -32,15 +32,6 @@ class ImageQuesList : AppCompatActivity(),ImageQuesAdapter.QuizItemClickListener
         imageQuesRecyclerView.hasFixedSize()
         imageQuesArrayList= arrayListOf<ImageQuestionModel>()
         getImageQuesData()
-        val quizItemClickListener=object :ImageQuesAdapter.QuizItemClickListener{
-            override fun onOptionClick(questionIndex: Int, optionIndex: Int) {
-                handleOptionClick(questionIndex,optionIndex)
-
-
-            }
-        }
-        quizAdapter=ImageQuesAdapter(imageQuesArrayList,quizItemClickListener)
-        imageQuesRecyclerView.adapter=quizAdapter
 
 
 
@@ -60,6 +51,16 @@ class ImageQuesList : AppCompatActivity(),ImageQuesAdapter.QuizItemClickListener
 
 
                     }
+
+                    val quizItemClickListener=object :ImageQuesAdapter.QuizItemClickListener{
+                        override fun onOptionClick(questionIndex: Int, optionIndex: Int) {
+                            handleOptionClick(questionIndex,optionIndex)
+
+
+                        }
+                    }
+                    quizAdapter=ImageQuesAdapter(imageQuesArrayList,quizItemClickListener)
+                    imageQuesRecyclerView.adapter=quizAdapter
 
                    //  imageQuesRecyclerView.adapter= ImageQuesAdapter(imageQuesArrayList)
 

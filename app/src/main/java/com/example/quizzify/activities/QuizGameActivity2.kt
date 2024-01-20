@@ -168,8 +168,8 @@ class QuizGameActivity2 : AppCompatActivity() {
 
 //            val normalizedTime=countdownTime.coerceIn(0L,maxTime)
 //            val score=((maxTime-normalizedTime)/maxTime.toDouble()*(maxScore-minScore)+minScore).toInt()
-        val timeLeft =  countDownInterval - iniTime
-        val score = 100 + timeLeft
+        val timeElapsed =  countDownInterval - iniTime
+        val score = 100 - timeElapsed/1000
         return score
 
     }

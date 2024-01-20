@@ -93,6 +93,7 @@ class UploadImageActivity2 : AppCompatActivity() {
         val id=db.push().key
         db.child(id.toString()).setValue(imagequestions).addOnSuccessListener{
             binding.enterQuestion.text.clear()
+            binding.correctimgans.text.clear()
 
             sImage1=""
             sImage2=""
@@ -131,7 +132,7 @@ class UploadImageActivity2 : AppCompatActivity() {
                 val inputStream=contentResolver.openInputStream(uri!!)
                 val myBitmap= BitmapFactory.decodeStream(inputStream)
                 val  stream= ByteArrayOutputStream()
-                myBitmap.compress(Bitmap.CompressFormat.JPEG,0,stream)
+                myBitmap.compress(Bitmap.CompressFormat.PNG,100,stream)
                 val bytes=stream.toByteArray()
                 sImage1= Base64.encodeToString(bytes, Base64.DEFAULT)
                 binding.imageView.setImageBitmap(myBitmap)
@@ -153,7 +154,7 @@ class UploadImageActivity2 : AppCompatActivity() {
                 val inputStream=contentResolver.openInputStream(uri!!)
                 val myBitmap= BitmapFactory.decodeStream(inputStream)
                 val  stream= ByteArrayOutputStream()
-                myBitmap.compress(Bitmap.CompressFormat.JPEG,0,stream)
+                myBitmap.compress(Bitmap.CompressFormat.PNG,100,stream)
                 val bytes=stream.toByteArray()
                 sImage2= Base64.encodeToString(bytes, Base64.DEFAULT)
                 binding.imageView2.setImageBitmap(myBitmap)
@@ -175,7 +176,7 @@ class UploadImageActivity2 : AppCompatActivity() {
                 val inputStream=contentResolver.openInputStream(uri!!)
                 val myBitmap= BitmapFactory.decodeStream(inputStream)
                 val  stream= ByteArrayOutputStream()
-                myBitmap.compress(Bitmap.CompressFormat.JPEG,0,stream)
+                myBitmap.compress(Bitmap.CompressFormat.PNG,100,stream)
                 val bytes=stream.toByteArray()
                 sImage3= Base64.encodeToString(bytes, Base64.DEFAULT)
                 binding.imageView3.setImageBitmap(myBitmap)
@@ -197,7 +198,7 @@ class UploadImageActivity2 : AppCompatActivity() {
                 val inputStream=contentResolver.openInputStream(uri!!)
                 val myBitmap= BitmapFactory.decodeStream(inputStream)
                 val  stream= ByteArrayOutputStream()
-                myBitmap.compress(Bitmap.CompressFormat.JPEG,0,stream)
+                myBitmap.compress(Bitmap.CompressFormat.PNG,100,stream)
                 val bytes=stream.toByteArray()
                 sImage4= Base64.encodeToString(bytes, Base64.DEFAULT)
                 binding.imageView4.setImageBitmap(myBitmap)
