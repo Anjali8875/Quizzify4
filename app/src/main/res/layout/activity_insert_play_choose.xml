@@ -9,43 +9,52 @@
 
     <Button
         android:id="@+id/btnInsertData"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+
         android:background="@android:color/holo_green_light"
+        android:orientation="horizontal"
         android:text="CREATE TEXT BASED QUESTIONS"
-        android:textSize="20sp"
+        android:textSize="14sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <Button
         android:id="@+id/btnFetchData"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+
         android:background="#fc67fa"
+
         android:text="Fetch text based questions"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.924"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
 
-    <Button
-        android:id="@+id/image"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="CREATE IMAGE BASED QUESTIONS"
-        app:layout_constraintBottom_toTopOf="@+id/btnFetchData"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672" />
+        app:layout_constraintVertical_bias="0.418" />
+
+    <Button
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+
+
+        android:text="CREATE IMAGE BASED QUESTIONS"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591" />
 
     <Button
         android:id="@+id/signOutBtn"
@@ -54,10 +63,10 @@
         android:text="Sign out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.831" />
+        app:layout_constraintVertical_bias="0.916" />
 
     <TextView
         android:id="@+id/textView"
@@ -72,31 +81,34 @@
 
     <Button
         android:id="@+id/fetchprofile"
-        android:layout_width="180dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
         android:onClick="showList"
+
         android:text="FETCH PROFILE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/fetchimgques"
 
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+
+
         android:onClick="showList2"
 
         android:text="FETCH IMAGE BASED QUESTIONS"
 
         app:layout_constraintBottom_toTopOf="@+id/signOutBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFetchData"
-        app:layout_constraintVertical_bias="0.445" />
+        app:layout_constraintVertical_bias="0.786" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

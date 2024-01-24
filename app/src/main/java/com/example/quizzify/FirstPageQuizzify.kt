@@ -15,10 +15,10 @@ class FirstPageQuizzify : AppCompatActivity() {
         setContentView(R.layout.activity_first_page_quizzify)
         button=findViewById(R.id.button)
         auth = FirebaseAuth.getInstance()
-        if(auth.currentUser !=null){
-            val intent= Intent(this@FirstPageQuizzify,InsertPlayChooseActivity::class.java)
-            startActivity(intent)
-        }
+       // if(auth.currentUser !=null){
+          //  val intent= Intent(this@FirstPageQuizzify,InsertPlayChooseActivity::class.java)
+           // startActivity(intent)
+       // }
 
         button.setOnClickListener{
 

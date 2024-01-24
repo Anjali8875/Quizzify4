@@ -111,6 +111,7 @@ class InsertionActivity : AppCompatActivity() {
                 etOption3.text.clear()
                 etOption4.text.clear()
                 ettime.text.clear()
+                etcorrectans.text.clear()
 
             }.addOnFailureListener {err->
                   Toast.makeText(this,"Error${err.message}",Toast.LENGTH_LONG).show()

@@ -21,6 +21,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
     private lateinit var auth:FirebaseAuth
     private lateinit var playTextQuiz:Button
     private lateinit var btnfetchimgques:Button
+    private lateinit var btnfetchprofile:Button
 
 
 
@@ -46,6 +47,7 @@ class InsertPlayChooseActivity : AppCompatActivity() {
         btnFetchData=findViewById(R.id.btnFetchData)
         btnImage=findViewById(R.id.image)
         btnfetchimgques=findViewById(R.id.fetchimgques)
+        btnfetchprofile=findViewById(R.id.fetchprofile)
 
         btnInsertData.setOnClickListener{
             val intent= Intent(this, InsertionActivity::class.java)
@@ -61,6 +63,13 @@ class InsertPlayChooseActivity : AppCompatActivity() {
             val intent=Intent(this, UploadImageActivity2::class.java)
             startActivity(intent)
         }
+
+
+      //  btnfetchprofile.setOnClickListener{
+         //   val intent=Intent(this,ProfileListActivity::class.java)
+          //  startActivity(intent)
+       // }
+
 
 
 

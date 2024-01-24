@@ -24,9 +24,8 @@ class QuizGameActivity2 : AppCompatActivity() {
     private lateinit var etOption2: TextView
     private lateinit var etOption3: TextView
     private lateinit var etOption4: TextView
-    private lateinit var btnUpdate: Button
-    private lateinit var etquestionId: TextView
-    private lateinit var btnDelete: Button
+   // private lateinit var etquestionId: TextView
+
     private lateinit var ettime:TextView
 
     private var countdownTime = 0L
@@ -39,7 +38,7 @@ class QuizGameActivity2 : AppCompatActivity() {
 
 
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var correctAns: String
+  //  private lateinit var correctAns: String
     private lateinit var databaseReference2: DatabaseReference
     private var iniTime = 0L
     private lateinit var auth : FirebaseAuth
@@ -53,55 +52,22 @@ class QuizGameActivity2 : AppCompatActivity() {
         timerText = findViewById(R.id.time2)
         auth = FirebaseAuth.getInstance()
         userID = auth.currentUser?.uid.toString()
-        var countdownTime=0L
+      //  var countdownTime=0L
         iniTime = System.currentTimeMillis()
 
 
 
 
-//        recordAnswerTime()
-        val userScore=calculateScore()
-
-       // fun calculateElapsedTime():Long{
-           // val currentTime=System.currentTimeMillis()
-           // return currentTime-startTime
-      //  }
-       // var timeLeftInMillis:Long=ettime.text.toString().toLongOrNull()?:0
 
 
 
-        // timeLeftInMillis=(ettime.text)*1000
 
-
-        // Initialize the CountDownTimer
         initCountDownTimer()
 
-        // Start the timer
         startCountDownTimer()
-       // val durationInMinutes=intent.getStringExtra("time")
-      //  startTimer(durationInMinutes)
 
 
 
-
-        val database = FirebaseDatabase.getInstance().reference
-        val timerRef = database.child("quiz")
-        val databaseReference2=FirebaseDatabase.getInstance().getReference("score")
-
-
-
-      //  if (questionId != null) {
-           // timerRef.child(questionId.toString()).addListenerForSingleValueEvent(object : ValueEventListener {
-             //   override fun onDataChange(snapshot: DataSnapshot) {
-              //      val durationInMinutes = snapshot.child("time").getValue(Long::class.java) ?: 0
-              //      startTimer(durationInMinutes)
-              //  }
-
-               // override fun onCancelled(error: DatabaseError) {
-
-               // }
-           // })
-       // }
 
 
 
@@ -120,10 +86,9 @@ class QuizGameActivity2 : AppCompatActivity() {
 
 
 
-        val radioGroup: RadioGroup = findViewById(R.id.radioGroup)
+
         val submitButton: Button = findViewById(R.id.submitButton)
 
-        val quesId=databaseReference.push().key
 
 
         submitButton.setOnClickListener {
@@ -131,21 +96,6 @@ class QuizGameActivity2 : AppCompatActivity() {
             checkAnswer()
         }
 
-
-
-        if (quesId != null) {
-            databaseReference.child(quesId).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val correctAns = snapshot.child("correctans").value.toString()
-
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            })
-        }
 
 
 
@@ -160,17 +110,11 @@ class QuizGameActivity2 : AppCompatActivity() {
     }
 
     private fun calculateScore():Long{
-//            val maxTime=10L
-//            val minScore=0
-//            val maxScore=100
 
-
-
-//            val normalizedTime=countdownTime.coerceIn(0L,maxTime)
-//            val score=((maxTime-normalizedTime)/maxTime.toDouble()*(maxScore-minScore)+minScore).toInt()
-        val timeElapsed =  countDownInterval - iniTime
+        val timeElapsed =  countdownTime - iniTime
         val score = 100 - timeElapsed/1000
         return score
+
 
     }
 
@@ -196,27 +140,7 @@ class QuizGameActivity2 : AppCompatActivity() {
 
     }
 
-  //  private fun startTimer(durationInMinutes: String?) {
-     //   val millisInFuture = durationInMinutes * 60 * 1000
 
-       // var countdownTimer = object : CountDownTimer(millisInFuture, 1000) {
-          //  override fun onTick(millisUntilFinished: Long) {
-           //     updateTimerText(millisUntilFinished)
-          //  }
-
-          //  override fun onFinish() {
-                //timerText.text = "Timer finished!"
-          //  }
-       // }
-
-
-   // }
-
-  //  private fun updateTimerText(millisUntilFinished: Long) {
-       // val minutes = millisUntilFinished / 1000 / 60
-      //  val seconds = (millisUntilFinished / 1000) % 60
-       // timerText.text = String.format("%02d:%02d", minutes, seconds)
-   // }
 
 
     private fun checkAnswer() {
@@ -227,11 +151,6 @@ class QuizGameActivity2 : AppCompatActivity() {
             val selectedRadioButton: RadioButton = findViewById(selectedRadioButtonId)
 
 
-
-//            val questionId=databaseReference.get()
-//            databaseReference.child(questionId.toString()).addListenerForSingleValueEvent(object : ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-                //    val correctOption = snapshot.child("correctans").getValue(String::class.java)
                     val correctOption = intent.getStringExtra("correct")
                     var score= 0
                     if (correctOption != null && selectedRadioButton.text.toString() == correctOption.toString()) {
@@ -240,10 +159,12 @@ class QuizGameActivity2 : AppCompatActivity() {
                         Toast.makeText(this@QuizGameActivity2,"correct answer\nScore - $score",Toast.LENGTH_LONG).show()
                         val intent= Intent(this@QuizGameActivity2,FetchingActivity::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
                         Toast.makeText(this@QuizGameActivity2,"Incorrect answer",Toast.LENGTH_LONG).show()
                         val intent= Intent(this@QuizGameActivity2,FetchingActivity::class.java)
                         startActivity(intent)
+                        finish()
 
 
                     }
@@ -256,13 +177,7 @@ class QuizGameActivity2 : AppCompatActivity() {
                    databaseReference2.child(userID).child(quesId).setValue(questions)
 
 
-                    //insert
-//                }
 
-//                override fun onCancelled(error: DatabaseError) {
-//
-//                }
-//            })
         } else {
 
             println("Please select an option.")
@@ -270,10 +185,9 @@ class QuizGameActivity2 : AppCompatActivity() {
     }
 
 
-   // private var timeLeftInMillis: Long=ettime.text.toString().toLongOrNull()?:0// 60 seconds
+
     private fun initCountDownTimer() {
-      // ettime=findViewById(R.id.time2)
-       // var timeLeftInMillis: Long=ettime.text.toString().toLongOrNull()?:0// 60 seconds
+
 
 
        countDownTimer = object : CountDownTimer(timeLeftInMillis, countDownInterval) {
@@ -283,7 +197,7 @@ class QuizGameActivity2 : AppCompatActivity() {
            }
 
            override fun onFinish() {
-                // Timer finished, handle accordingly
+
                  handleTimerFinish()
            }
         }
@@ -294,26 +208,20 @@ class QuizGameActivity2 : AppCompatActivity() {
     }
 
     private fun updateCountDownText() {
-       // ettime=findViewById(R.id.time2)
-       // var timeLeftInMillis: Long=ettime.text.toString().toLongOrNull()?:0// 60 seconds
-        // Update your UI with the remaining time (e.g., update a TextView)
         val seconds = (timeLeftInMillis/1000).toInt()
         timerText.text = seconds.toString()
     }
 
     private fun handleTimerFinish() {
-        // Timer finished, handle accordingly
-        //timerText.text = "0"
         checkAnswer()
         val intent= Intent(this@QuizGameActivity2,FetchingActivity::class.java)
         startActivity(intent)
         finish()
-        // Add your logic here for actions to be taken when the timer finishes
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Cancel the timer to avoid leaks when the activity is destroyed
         countDownTimer.cancel()
     }
 }
