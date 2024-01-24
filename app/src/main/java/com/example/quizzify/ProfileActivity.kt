@@ -42,7 +42,7 @@ class ProfileActivity : AppCompatActivity() {
         val lastName=binding.lastName.text.toString()
         val gender=binding.Gender.text.toString()
         val age=binding.Age.text.toString()
-        db=FirebaseDatabase.getInstance().getReference("items2")
+        db=FirebaseDatabase.getInstance().getReference("profile")
         val profile=ProfileModel(firstName,lastName,age,gender,sImage)
         val databaseReference=FirebaseDatabase.getInstance().reference
         val id=databaseReference.push().key

@@ -26,22 +26,26 @@ class ProfileListActivity : AppCompatActivity() {
         profileRecyclerView.hasFixedSize()
         profileArrayList= arrayListOf<ProfileModel>()
         getProfileData()
+       // auth=FirebaseAuth.getInstance()
+       // val uid=auth.currentUser?.uid
 
 
     }
 
     private fun getProfileData() {
-        db=FirebaseDatabase.getInstance().getReference("items")
+        db=FirebaseDatabase.getInstance().getReference("profile")
         db.addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for(profilesnapshot in snapshot.children){
-                        val profile=profilesnapshot.getValue(ProfileModel::class.java)
 
-                        profileArrayList.add(profile!!)
-                    }
-                    profileRecyclerView.adapter=ProfileAdapter(profileArrayList)
-                }
+                  if (snapshot.exists()) {
+                      for (profilesnapshot in snapshot.children) {
+                          val profile = profilesnapshot.getValue(ProfileModel::class.java)
+
+                          profileArrayList.add(profile!!)
+                      }
+                      profileRecyclerView.adapter = ProfileAdapter(profileArrayList)
+                  }
+
             }
 
             override fun onCancelled(error: DatabaseError) {
